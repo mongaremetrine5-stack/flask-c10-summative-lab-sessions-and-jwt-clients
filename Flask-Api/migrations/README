@@ -1,1 +1,65 @@
-Single-database configuration for Flask.
+
+Secure Notes API
+
+A Flask REST API that allows users to register, login, and manage personal notes securely using JWT authentication. Each user can only access and modify their own notes.
+
+Features
+User registration and login
+JWT authentication
+Secure password hashing (Flask-Bcrypt)
+Full CRUD operations for notes
+Route protection (user-specific data access)
+Pagination support
+Tech Stack
+
+Python, Flask, Flask-RESTful, Flask-JWT-Extended, Flask-Migrate, Flask-Bcrypt, SQLAlchemy, SQLite
+
+Project Structure
+app.py
+models.py
+migrations/
+resources/
+ ├── auth.py
+ └── notes.py
+Installation
+git clone <repo-url>
+cd <project-folder>
+python3 -m venv venv
+source venv/bin/activate
+pip install flask flask-restful flask-migrate flask-jwt-extended flask-bcrypt flask-sqlalchemy
+Database Setup
+flask db init
+flask db migrate -m "initial migration"
+flask db upgrade
+Run Application
+python app.py
+
+Server runs at:
+
+http://127.0.0.1:5000
+Authentication Endpoints
+
+POST /register – Create user account
+POST /login – Get JWT token
+
+Notes Endpoints (Protected)
+
+GET /notes?page=1 – Get user notes (paginated)
+POST /notes – Create note
+PATCH /notes/<id> – Update note
+DELETE /notes/<id> – Delete note
+
+Rules
+Users only access their own notes
+JWT required for all notes routes
+Passwords are securely hashed
+Error Codes
+
+400 – Bad Request
+401 – Unauthorized
+404 – Not Found
+500 – Server Error
+
+Author
+
+Met Mongare
